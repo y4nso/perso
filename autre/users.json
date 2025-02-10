@@ -1,0 +1,16 @@
+[
+    {
+        "email": "Yanis.Bennour@outlook.fr",
+        "hashed_password": "$2b$12$uGBWDYH7HhfMFV8qwYXJg.Bh3RzwxZE9nqnTVqhL.x6qVLW9xYY5O",
+        "full_name": "neuille"
+    },
+    {
+        "email": "becot.garance@gmail.com",
+        "hashed_password": "$2b$12$k4nQ/MJHQgqlnoOZgc8UxOrM8zcFOF9wmPK8qenm.AnpFuAeJQspS",
+        "full_name": "freur",
+        "epreuve1": false,
+        "epreuve2": false,
+        "epreuve3": false,
+        "epreuve4": false
+    }
+]

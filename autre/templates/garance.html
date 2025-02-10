@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Garance{% endblock %}
+{% block content %}
+<section class="garance-content">
+    <h2>Bienvenue, Garance !</h2>
+    <p>Ceci est une page spéciale pour Garance.</p>
+    <div class="epreuves">
+        <a href="/garance/epreuve1" class="special-button {% if user.epreuve1 %}disabled-button{% endif %}">Épreuve 1</a>
+        <a href="/garance/epreuve2" class="special-button {% if user.epreuve2 %}disabled-button{% endif %}">Épreuve 2</a>
+        <a href="/garance/epreuve3" class="special-button {% if user.epreuve3 %}disabled-button{% endif %}">Épreuve 3</a>
+        <a href="/garance/epreuve4" class="special-button {% if user.epreuve4 %}disabled-button{% endif %}">Épreuve 4</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,27 @@
+<!-- templates/index.html -->
+{% extends "base.html" %}
+{% block title %}Accueil - Yanso Portfolio{% endblock %}
+{% block content %}
+<section class="hero">
+    <h1>Bienvenue sur le Portfolio de Yanso</h1>
+    <p>Découvrez mes projets, mes articles de blog et bien plus encore.</p>
+    {% if user_email == "becot.garance@gmail.com" %}
+        <a href="/garance" class="special-button">Coucou Garance</a>
+    {% endif %}
+</section>
+<section class="blog-preview">
+    <h2>Derniers Articles</h2>
+    <div class="articles">
+        <article>
+            <h3>Titre de l'article</h3>
+            <p>Un extrait de l'article...</p>
+            <a href="#">Lire la suite</a>
+        </article>
+        <article>
+            <h3>Un autre article</h3>
+            <p>Un extrait de l'article...</p>
+            <a href="#">Lire la suite</a>
+        </article>
+    </div>
+</section>
+{% endblock %}

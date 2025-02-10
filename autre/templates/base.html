@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Yanso Portfolio{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Accueil</a>
+            <a href="/game">Jeu</a>
+            {% if request.cookies.get("access_token") %}
+                <a href="/profile">Profil</a>
+                <a href="/logout">Déconnexion</a>
+            {% else %}
+                <a href="/login">Connexion</a>
+                <a href="/register">Inscription</a>
+            {% endif %}
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2025 Yanso. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

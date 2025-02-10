@@ -1,0 +1,119 @@
+<!-- templates/epreuve1.html -->
+{% extends "base.html" %}
+{% block title %}Épreuve 1 - Puzzle{% endblock %}
+{% block content %}
+<section class="epreuve-content">
+    <h2>Épreuve 1 : Remets le puzzle en ordre</h2>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <div class="puzzle-container">
+        <!-- Partie gauche : le puzzle -->
+        <div class="puzzle-left">
+            <h3>Reconstitue l'image</h3>
+            <div id="puzzle-container">
+                <!-- Chaque div représente une pièce du puzzle.
+                     L'attribut data-index indique la position CORRECTE.
+                     Ici, on utilise 1,2,3,4 pour représenter les pièces dans l'ordre attendu. -->
+                <div class="puzzle-piece" draggable="true" data-index="1">1</div>
+                <div class="puzzle-piece" draggable="true" data-index="2">2</div>
+                <div class="puzzle-piece" draggable="true" data-index="3">3</div>
+                <div class="puzzle-piece" draggable="true" data-index="4">4</div>
+            </div>
+        </div>
+        <!-- Partie droite : apparaît une fois le puzzle résolu -->
+        <div class="puzzle-right" id="puzzle-right" style="display:none;">
+            <h3>La suite sur insta @caca</h3>
+            <form method="post" action="/garance/epreuve1">
+                <input type="text" name="code" placeholder="Entrez le code" required>
+                <button type="submit" class="special-button">Valider</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Récupération du conteneur et de la zone de droite
+    const container = document.getElementById('puzzle-container');
+    const puzzleRight = document.getElementById('puzzle-right');
+    let dragSrcEl = null;
+
+    // Fonction de mélange qui garantit que l'ordre n'est pas "1234"
+    function shufflePieces() {
+        let piecesArray = Array.from(container.children);
+        let order;
+        do {
+            // Mélange de Fisher-Yates
+            for (let i = piecesArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [piecesArray[i], piecesArray[j]] = [piecesArray[j], piecesArray[i]];
+            }
+            order = piecesArray.map(piece => piece.getAttribute('data-index')).join('');
+        } while (order === '1234'); // Refaire le shuffle si l'ordre est déjà correct
+
+        // Réattache les pièces dans le conteneur dans le nouvel ordre
+        piecesArray.forEach(piece => container.appendChild(piece));
+    }
+
+    // Gestion du drag and drop pour chaque pièce
+    const pieces = Array.from(container.getElementsByClassName('puzzle-piece'));
+    pieces.forEach(piece => {
+        piece.addEventListener('dragstart', handleDragStart, false);
+        piece.addEventListener('dragover', handleDragOver, false);
+        piece.addEventListener('drop', handleDrop, false);
+        piece.addEventListener('dragend', handleDragEnd, false);
+    });
+
+    function handleDragStart(e) {
+        dragSrcEl = this;
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+        return false;
+    }
+
+    function handleDrop(e) {
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+        if (dragSrcEl !== this) {
+            // Échange du contenu et de l'attribut data-index entre les deux pièces
+            let tempHTML = this.innerHTML;
+            let tempIndex = this.getAttribute('data-index');
+
+            this.innerHTML = dragSrcEl.innerHTML;
+            this.setAttribute('data-index', dragSrcEl.getAttribute('data-index'));
+
+            dragSrcEl.innerHTML = tempHTML;
+            dragSrcEl.setAttribute('data-index', tempIndex);
+        }
+        checkPuzzle();
+        return false;
+    }
+
+    function handleDragEnd(e) {
+        // On peut ajouter des effets visuels ici si besoin
+    }
+
+    // Vérification de l'ordre des pièces
+    function checkPuzzle() {
+        const piecesArr = Array.from(container.getElementsByClassName('puzzle-piece'));
+        const order = piecesArr.map(piece => piece.getAttribute('data-index')).join('');
+        // Si l'ordre est correct ("1234"), afficher le panneau de droite
+        if (order === '1234') {
+            puzzleRight.style.display = 'block';
+        } else {
+            puzzleRight.style.display = 'none';
+        }
+    }
+
+    // Mélanger les pièces dès le chargement
+    shufflePieces();
+</script>
+{% endblock %}

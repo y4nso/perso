@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Épreuve 4{% endblock %}
+{% block content %}
+<section class="epreuve-content">
+    <h2>Épreuve 4</h2>
+    <p>Contenu de l'épreuve 4. Remplacez ce texte par ce que vous voulez.</p>
+    <form method="post" action="/garance/epreuve4">
+        {% if user.epreuve4 %}
+            <button type="submit" disabled class="disabled-button">Réussir épreuve</button>
+        {% else %}
+            <button type="submit" class="special-button">Réussir épreuve</button>
+        {% endif %}
+    </form>
+    <a href="/garance" class="back-button">Retour à la page Garance</a>
+</section>
+{% endblock %}
