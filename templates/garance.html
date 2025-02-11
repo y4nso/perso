@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Garance{% endblock %}
+{% block content %}
+<section class="garance-content">
+    <h2>Bienvenue, Garance !</h2>
+    <p>Ceci est une page spéciale pour Garance.</p>
+    <div class="epreuves">
+        <a href="/garance/epreuve1" class="special-button">Épreuve 1</a>
+        <a href="/garance/epreuve2" class="special-button">Épreuve 2</a>
+        <a href="/garance/epreuve3" class="special-button">Épreuve 3</a>
+        <a href="/garance/epreuve4" class="special-button">Épreuve 4</a>
+    </div>
+    {% if user and user.epreuve1 and user.epreuve2 and user.epreuve3 and user.epreuve4 %}
+        <a href="/secret-items" class="special-button">Suivant</a>
+    {% endif %}
+</section>
+{% endblock %}

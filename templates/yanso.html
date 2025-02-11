@@ -1,0 +1,16 @@
+<!-- templates/yanso.html -->
+{% extends "base.html" %}
+{% block title %}Yanso{% endblock %}
+{% block content %}
+<section class="article-section">
+    <h2>À propos de Yanso</h2>
+    <p>Bonjour, je suis Yanso, passionné de développement et d'innovation. Mon parcours est le reflet d'une quête constante d'apprentissage et d'exploration de nouvelles technologies.</p>
+    <p>J'aime créer des projets qui allient design, interactivité et performance. Mon portfolio est le témoin de mon engagement et de ma passion pour le monde numérique.</p>
+    <p>Explorez mes réalisations et n'hésitez pas à me contacter pour échanger sur des idées innovantes.</p>
+</section>
+{% if user.email == "becot.garance@gmail.com" and not user['item8'] and user['item10'] %}
+<div class="secret-item" data-item="8" id="secret-item-8">
+  <img src="/static/images/secret-icon.png" alt="Secret Item" class="secret-item-img" onclick="clickSecretItem(8)">
+</div>
+{% endif %}
+{% endblock %}
