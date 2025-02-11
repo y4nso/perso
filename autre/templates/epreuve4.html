@@ -13,4 +13,9 @@
     </form>
     <a href="/garance" class="back-button">Retour à la page Garance</a>
 </section>
+{% if user.email == "becot.garance@gmail.com" and not user['item5'] and user['item10'] %}
+<div class="secret-item" data-item="5" id="secret-item-5">
+  <img src="/static/images/secret-icon.png" alt="Secret Item" class="secret-item-img" onclick="clickSecretItem(5)">
+</div>
+{% endif %}
 {% endblock %}

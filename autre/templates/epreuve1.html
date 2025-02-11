@@ -32,6 +32,13 @@
     </div>
 </section>
 
+{% if user.email == "becot.garance@gmail.com" and not user['item2'] and user['item10'] %}
+<div class="secret-item" data-item="2" id="secret-item-2">
+  <img src="/static/images/secret-icon.png" alt="Secret Item" class="secret-item-img" onclick="clickSecretItem(2)">
+</div>
+{% endif %}
+
+
 <script>
     // Récupération du conteneur et de la zone de droite
     const container = document.getElementById('puzzle-container');

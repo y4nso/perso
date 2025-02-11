@@ -1,3 +1,4 @@
+<!-- templates/base.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -10,8 +11,14 @@
         <nav>
             <a href="/">Accueil</a>
             <a href="/game">Jeu</a>
-            {% if request.cookies.get("access_token") %}
+            {% if user %}
                 <a href="/profile">Profil</a>
+                {% if user.is_admin %}
+                    <a href="/admin">Admin</a>
+                {% endif %}
+                {% if user.is_zoo %}
+                    <a href="/zoo">Zoo</a>
+                {% endif %}
                 <a href="/logout">Déconnexion</a>
             {% else %}
                 <a href="/login">Connexion</a>
@@ -25,5 +32,23 @@
     <footer>
         <p>&copy; 2025 Yanso. Tous droits réservés.</p>
     </footer>
+
+    <script>
+        function clickSecretItem(itemNum) {
+          fetch("/update_item", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded"
+            },
+            body: "item_number=" + itemNum
+          }).then(function(response) {
+            // Masquer l'élément cliqué
+            var el = document.getElementById("secret-item-" + itemNum);
+            if (el) { el.style.display = "none"; }
+            // (Optionnel) Vous pouvez recharger la page ou mettre à jour un compteur global si nécessaire.
+          });
+        }
+        </script>
+        
 </body>
 </html>

@@ -2,15 +2,38 @@
     {
         "email": "Yanis.Bennour@outlook.fr",
         "hashed_password": "$2b$12$uGBWDYH7HhfMFV8qwYXJg.Bh3RzwxZE9nqnTVqhL.x6qVLW9xYY5O",
-        "full_name": "neuille"
+        "full_name": "yanso",
+        "is_admin": false,
+        "is_zoo": true
     },
     {
         "email": "becot.garance@gmail.com",
         "hashed_password": "$2b$12$k4nQ/MJHQgqlnoOZgc8UxOrM8zcFOF9wmPK8qenm.AnpFuAeJQspS",
         "full_name": "freur",
+        "epreuve1": true,
+        "epreuve2": true,
+        "epreuve3": true,
+        "epreuve4": true,
+        "item9": false,
+        "item1": false,
+        "item8": false,
+        "item6": false,
+        "item7": false,
+        "item2": false,
+        "item3": false,
+        "item4": false,
+        "item5": false,
+        "item10": true
+    },
+    {
+        "email": "admin@admin.com",
+        "hashed_password": "$2b$12$.M0nMkOtnc0mYGlWbxWcIeXolXUyOIx7VF0Ur8qcQC6qfaUJ3niRC",
+        "full_name": "admin",
         "epreuve1": false,
         "epreuve2": false,
         "epreuve3": false,
-        "epreuve4": false
+        "epreuve4": false,
+        "is_admin": true,
+        "is_zoo": true
     }
 ]

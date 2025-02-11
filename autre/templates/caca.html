@@ -12,4 +12,9 @@
         <img src="/static/images/placeholder.png" alt="Image à venir">
     </div>
 </section>
+{% if user.email == "becot.garance@gmail.com" and not user['item9'] and user['item10'] %}
+<div class="secret-item" data-item="9" id="secret-item-9">
+  <img src="/static/images/secret-icon.png" alt="Secret Item" class="secret-item-img" onclick="clickSecretItem(9)">
+</div>
+{% endif %}
 {% endblock %}

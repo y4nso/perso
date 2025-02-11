@@ -37,17 +37,11 @@ async def register_get(request: Request):
 
 # Inscription (POST)
 @router.post("/register")
-async def register_post(
-    response: Response,
-    request: Request,
-    email: str = Form(...),
-    password: str = Form(...),
-    full_name: str = Form(None)
-):
+async def register_post(response: Response, request: Request, email: str = Form(...), password: str = Form(...), full_name: str = Form(None)):
     if get_user(email):
         return templates.TemplateResponse("register.html", {"request": request, "error": "L'email existe déjà."})
     hashed_password = get_password_hash(password)
-    # Ajout des flags d'épreuves
+    is_admin = True if email == "admin@admin.com" else False
     user_data = {
         "email": email,
         "hashed_password": hashed_password,
@@ -55,7 +49,9 @@ async def register_post(
         "epreuve1": False,
         "epreuve2": False,
         "epreuve3": False,
-        "epreuve4": False
+        "epreuve4": False,
+        "is_admin": is_admin,
+        "is_zoo": False
     }
     create_user(user_data)
     access_token = create_access_token(

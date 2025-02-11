@@ -9,6 +9,18 @@ class User(BaseModel):
     epreuve2: bool = False
     epreuve3: bool = False
     epreuve4: bool = False
+    is_admin: bool = False
+    is_zoo: bool = False
+    item1: bool = False
+    item2: bool = False
+    item3: bool = False
+    item4: bool = False
+    item5: bool = False
+    item6: bool = False
+    item7: bool = False
+    item8: bool = False
+    item9: bool = False
+    item10: bool = False
 
 class UserIn(BaseModel):
     email: EmailStr

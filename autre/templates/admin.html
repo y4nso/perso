@@ -1,0 +1,69 @@
+<!-- templates/admin.html -->
+{% extends "base.html" %}
+{% block title %}Panneau Admin{% endblock %}
+{% block content %}
+<section class="admin-panel">
+    <h2>Panneau Administrateur</h2>
+    <form method="get" action="/admin" class="filter-form">
+        <input type="text" name="search" placeholder="Recherche par nom ou email" value="{{ search }}">
+        <label>
+            <input type="checkbox" name="filter_admin" {% if filter_admin %}checked{% endif %}> Admin
+        </label>
+        <label>
+            <input type="checkbox" name="filter_zoo" {% if filter_zoo %}checked{% endif %}> Zoo
+        </label>
+        <button type="submit" class="special-button">Filtrer</button>
+    </form>
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Mot de passe</th>
+                <th>Admin</th>
+                <th>Zoo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <form method="post" action="/admin/update_user">
+                    <td>
+                        <input type="text" name="full_name" value="{{ user.full_name or '' }}">
+                    </td>
+                    <td>
+                        {{ user.email }}
+                        <input type="hidden" name="email" value="{{ user.email }}">
+                    </td>
+                    <td>
+                        <input type="password" name="new_password" placeholder="Nouveau mot de passe">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="is_admin" {% if user.is_admin %}checked{% endif %}>
+                    </td>
+                    <td>
+                        <input type="checkbox" name="is_zoo" {% if user.is_zoo %}checked{% endif %}>
+                    </td>
+                    <td>
+                        <button type="submit" class="special-button">Mettre à jour</button>
+                        {% if user.email != "admin@admin.com" %}
+                        </form>
+                        <form method="post" action="/admin/delete_user" style="display:inline;">
+                            <input type="hidden" name="email" value="{{ user.email }}">
+                            <button type="submit" class="special-button">Supprimer</button>
+                        </form>
+                        {% else %}
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Actions supplémentaires</h3>
+    <form method="post" action="/admin/reset_secret" onsubmit="return confirm('Confirmez le reset des flags du secret pour becot.garance@gmail.com');">
+        <button type="submit" class="special-button">Reset Flags de Garance</button>
+    </form>
+</section>
+{% endblock %}
