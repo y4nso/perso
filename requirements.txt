@@ -3,3 +3,5 @@ uvicorn
 jinja2
 passlib[bcrypt]
 pyjwt
+python-multipart
+aiofiles
