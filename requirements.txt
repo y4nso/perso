@@ -6,4 +6,3 @@ pyjwt
 python-multipart
 aiofiles
 pydantic
-pydantic[email]

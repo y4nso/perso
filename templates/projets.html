@@ -3,14 +3,11 @@
 {% block title %}Mes projets perso{% endblock %}
 {% block content %}
 <section class="article-section">
-    <h2>Mes projets perso</h2>
-    <p>Dans cette section, je présente mes projets personnels. Vous trouverez ici des photos et des liens vers d'autres articles détaillés sur chaque projet.</p>
+    <h2>Les projets du GOAT</h2>
+    <p>Ici on parle des projets du GOAT, mais c'est uniquement pour les meilleurs suceurs.</p>
     <div class="project-gallery">
         <img src="/static/images/projet1.jpg" alt="Projet 1">
-        <img src="/static/images/projet2.jpg" alt="Projet 2">
-        <img src="/static/images/projet3.jpg" alt="Projet 3">
     </div>
-    <p>Pour en savoir plus, explorez mes autres articles ou cliquez sur les images ci-dessus pour découvrir chaque projet.</p>
 </section>
 {% if user.email == "becot.garance@gmail.com" and not user['item6'] and user['item10'] %}
 <div class="secret-item" data-item="6" id="secret-item-6">

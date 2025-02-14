@@ -593,3 +593,75 @@ footer {
     margin-bottom: 5px;
   }
   
+/* -------------------------------
+   Styles pour les pages articles
+   ------------------------------- */
+   .article-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #2a2c3a;            /* Fond sombre cohérent avec le reste du site */
+    border: 2px solid #ff4081;       /* Bordure en accord avec la palette du site */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .article-section h2 {
+    font-size: 2.5rem;
+    color: #ff4081;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .article-section p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  /* Pour les galeries de projets */
+  .project-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .project-gallery img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Pour l'article Highlight, avec effet d'apparition progressive */
+  .story-container {
+    margin-top: 20px;
+  }
+  
+  .story-container p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  
+  .story-container p.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .video-container {
+    text-align: center;
+    margin: 30px auto;
+    padding: 10px;
+    border: 2px solid #ff4081;
+    border-radius: 8px;
+    background: #1e1e2d;
+    max-width: 420px;
+  }

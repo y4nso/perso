@@ -3,11 +3,32 @@
 {% block title %}Yanso{% endblock %}
 {% block content %}
 <section class="article-section">
-    <h2>À propos de Yanso</h2>
-    <p>Bonjour, je suis Yanso, passionné de développement et d'innovation. Mon parcours est le reflet d'une quête constante d'apprentissage et d'exploration de nouvelles technologies.</p>
-    <p>J'aime créer des projets qui allient design, interactivité et performance. Mon portfolio est le témoin de mon engagement et de ma passion pour le monde numérique.</p>
-    <p>Explorez mes réalisations et n'hésitez pas à me contacter pour échanger sur des idées innovantes.</p>
+    <h2>À propos du GOAT</h2>
+    <p>ICI LE GOAT</p>
+    <p>C'EST LE GOAT QUI PARLE</p>
+    <p>VOUS LISEZ LES MOTS DU GOAT</p>
+
+    <div class="video-container">
+      <video id="tiktokVideo" playsinline autoplay loop style="width:100%; max-width:400px; display:block; margin: 20px auto;">
+        <source src="/static/videos/yanso.MOV">
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </div>
+    </section>
+
 </section>
+
+<script>
+// Ajout d'un event listener pour toggler pause/play au clic
+const video = document.getElementById('tiktokVideo');
+video.addEventListener('click', function() {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+});
+</script>
 {% if user.email == "becot.garance@gmail.com" and not user['item8'] and user['item10'] %}
 <div class="secret-item" data-item="8" id="secret-item-8">
   <img src="/static/images/secret-icon.png" alt="Secret Item" class="secret-item-img" onclick="clickSecretItem(8)">
