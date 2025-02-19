@@ -1,0 +1,32 @@
+<!-- templates/zeyo.html -->
+{% extends "base.html" %}
+{% block title %}zeyo{% endblock %}
+{% block content %}
+<section class="article-section">
+    <h2>À propos de Zeyo</h2>
+    <p>On parle de Zeyo Binks</p>
+    <p>Le deuxième BOAT (Baveur Of All Time)</p>
+    <p>NzoBOAT</p>
+
+    <div class="video-container">
+      <video id="tiktokVideo" playsinline autoplay loop style="width:100%; max-width:400px; display:block; margin: 20px auto;">
+        <source src="/static/videos/zeyo.MOV">
+        Votre navigateur ne supporte pas la vidéo.
+      </video>
+    </div>
+    </section>
+
+</section>
+
+<script>
+// Ajout d'un event listener pour toggler pause/play au clic
+const video = document.getElementById('tiktokVideo');
+video.addEventListener('click', function() {
+  if (video.paused) {
+    video.play();
+  } else {
+    video.pause();
+  }
+});
+</script>
+{% endblock %}

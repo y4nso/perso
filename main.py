@@ -322,6 +322,26 @@ async def yanso_article(request: Request):
             user = get_user(payload.get("sub"))
     return templates.TemplateResponse("yanso.html", {"request": request, "user": user})
 
+@app.get("/articles/daize", response_class=HTMLResponse)
+async def daize_article(request: Request):
+    token = request.cookies.get("access_token")
+    user = None
+    if token:
+        payload = decode_access_token(token)
+        if payload:
+            user = get_user(payload.get("sub"))
+    return templates.TemplateResponse("daize.html", {"request": request, "user": user})
+
+@app.get("/articles/zeyo", response_class=HTMLResponse)
+async def zeyo_article(request: Request):
+    token = request.cookies.get("access_token")
+    user = None
+    if token:
+        payload = decode_access_token(token)
+        if payload:
+            user = get_user(payload.get("sub"))
+    return templates.TemplateResponse("zeyo.html", {"request": request, "user": user})
+
 
 # --- Utilitaire pour récupérer l'utilisateur courant ---
 def current_user(request: Request):
