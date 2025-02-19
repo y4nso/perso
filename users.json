@@ -10,10 +10,10 @@
         "email": "becot.garance@gmail.com",
         "hashed_password": "$2b$12$k4nQ/MJHQgqlnoOZgc8UxOrM8zcFOF9wmPK8qenm.AnpFuAeJQspS",
         "full_name": "freur",
-        "epreuve1": true,
-        "epreuve2": true,
-        "epreuve3": true,
-        "epreuve4": true,
+        "epreuve1": false,
+        "epreuve2": false,
+        "epreuve3": false,
+        "epreuve4": false,
         "item9": false,
         "item1": false,
         "item8": false,
@@ -23,7 +23,7 @@
         "item3": false,
         "item4": false,
         "item5": false,
-        "item10": true
+        "item10": false
     },
     {
         "email": "admin@admin.com",
