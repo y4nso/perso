@@ -14,6 +14,15 @@
         <!-- Formulaire caché pour envoyer la requête POST -->
         <form id="resetForm" action="/reset_flags" method="post" style="display:none;"></form>
     {% endif %}
+        {% if user.email == "aleyna.cebre@gmail.com" or user.email == "Yanis.Bennour@outlook.fr"%}
+        <br /> <br />
+        <h2>Le azerty-code</h2>
+        <input type="text" id="inputText" placeholder="Entrez un mot..."><br />
+        <button class="special-button" onclick="convertText('azerty')">Code</button>
+        <button class="special-button" onclick="convertText('alphabet')">Decode</button>
+        <div class="video-container"><p>Résultat : <span id="outputText"></span></p></div>
+        
+{% endif %}
 </section>
 
 <script>
@@ -28,5 +37,39 @@
             }
         });
     }
+
+    const azerty = "azertyuiopqsdfghjklmwxcvbn".split('');
+    const alphabet = "abcdefghijklmnopqrstuvwxyz".split('');
+
+    function convert(input, from, to) {
+            return input.split('').map(letter => {
+                let index = from.indexOf(letter);
+                return index !== -1 ? to[index] : letter;
+            }).join('');
+    }
+
+    function convertText(mode) {
+            let inputText = document.getElementById("inputText").value.toLowerCase();
+            let outputText = mode === 'azerty' 
+                ? convert(inputText, alphabet, azerty) 
+                : convert(inputText, azerty, alphabet);
+            document.getElementById("outputText").textContent = outputText;
+    }
 </script>
+
+<style>
+    input {
+        width: 80%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    p {
+        font-size: 18px;
+        margin-top: 15px;
+    }
+</style>
+
 {% endblock %}
