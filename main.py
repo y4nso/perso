@@ -6,6 +6,8 @@ from fastapi.templating import Jinja2Templates
 from auth import router as auth_router
 from utils import decode_access_token, get_user, update_user, get_users, save_users
 
+app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
+
 # Monter le dossier static
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
